@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Fontawesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+		<a class="navbar-brand" href="#">eventus</a>
+		<div class="navbar-nav ml-auto">
+			<form class="form-inline my-2 my-lg-0">
+				<div class="row">
+					<div class="col-sm">
+						<input type="text" class="form-control" id="access_token" placeholder="Token" />
+					</div>
+					<div class="col-sm">
+						<button type="button" class="btn btn-outline-light" id="gettoken">Get Token</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</nav>
+
+	<!-- Modal -->
+	<div class="modal fade" id="timeout" tabindex="-1" role="dialog" aria-labelledby="timeout" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="timeoutModalLabel"><i class="fas fa-hourglass-end"></i> Session Timeout
+					</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					Your session has timed out.
+				</div>
+				<div class="modal-footer">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-flex -fluid mt-5 p-5">
+
+		<div class="row">
+
+			<div class="col-2">
+
+				<form class="form" id="reportfrm" style="display:none">
+
+					<select class="form-control mb-5" id="report">
+						<option>Reporting: Historical Reporting</option>
+						<option>agentPerformance</option>
+						<option>skillSummaries</option>
+						<option>serviceLevelSummaries</option>
+						<option>teamPerformanceTotal</option>
+					</select>
+
+					<select class="form-control mb-5" id="charttype">
+						<option value="bar">Bar</option>
+						<option value="doughnut" selected>Doughnut</option>
+						<option value="pie">Pie</option>
+					</select>
+
+					<hr />
+
+					<div class="form-group" id="dategroup" style="display: none">
+						<label for="startDate">Start Date</label>
+						<input type="datetime-local" class="form-control form-control-lg mb-3" id="startDate"
+							name="startDate">
+
+						<label for="endDate">End Date</label>
+						<input type="datetime-local" class="form-control form-control-lg mb-3" id="endDate"
+							name="endDate">
+					</div>
+
+					<div class="form-group" id="agentgroup" style="display: none">
+						<label for="agents">Agent</label>
+						<span id="agents"></span>
+					</div>
+
+					<div class="form-group" id="skillgroup" style="display: none">
+						<label for="skills" class="mt-3">Skill</label>
+						<span id="skills"></span>
+					</div>
+
+					<div class="form-group" id="teamgroup" style="display: none">
+						<label for="teams" class="mt-3">Team</label>
+						<span id="teams"></span>
+					</div>
+
+					<button type="button" class="btn btn-block btn-outline-primary mt-5" id="getreport">Get
+						Report</button>
+					<button type="button" class="btn btn-block btn-outline-primary mt-5" id="printreport">Print
+						Report</button>
+
+				</form>
+
+			</div>
+
+			<div class="col-7" id="results">
+
+				<div class="text-center" id="reportTitle"></div>
+				<div>
+					<canvas id="myChart"></canvas>
+				</div>
+
+			</div>
+
+			<div class="col-3">
+				<span class="mt-5 pt-5" id="data"></span>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Latest Chart JS -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"
+		integrity="sha256-ErZ09KkZnzjpqcane4SCyyHsKAXMvID9/xwbl/Aq1pc=" crossorigin="anonymous"></script>
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!-- Latest Bootstrap JS -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+	<!-- Eventus JS -->
+	<script src="javascripts/eventus.js"></script>
+</body>
+
+</html>
