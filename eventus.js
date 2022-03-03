@@ -211,7 +211,7 @@ $(document).ready(function () {
                     data: {
                         labels: ['agentOffered', 'inboundHandled', 'outboundHandled', 'totalHandled', 'totalAvgHandled', 'refused'],
                         datasets: [{
-                            label: [agentOffered, inboundHandled, outboundHandled, totalHandled, totalAvgHandled, refused],
+                            label: $('#teams option:selected').text(),
                             data: [agentOffered, inboundHandled, outboundHandled, totalHandled, totalAvgHandled, refused],
                             backgroundColor: [
                                 'rgba(0, 0, 128, 0.2)',
@@ -492,6 +492,7 @@ $(document).ready(function () {
                 ContactsOutOfSLA = response.serviceLevelSummaries[0].ContactsOutOfSLA;
                 TotalContacts = response.serviceLevelSummaries[0].TotalContacts;
                 ServiceLevel = response.serviceLevelSummaries[0].ServiceLevel;
+                skillName = response.serviceLevelSummaries[0].SkillName;
 
                 console.log(response.serviceLevelSummaries[0])
 
@@ -501,7 +502,7 @@ $(document).ready(function () {
                     data: {
                         labels: ['ContactsWithinSLA', 'ContactsOutOfSLA', 'TotalContacts'],
                         datasets: [{
-                            label: 'serviceLevelSummaries',
+                            label: skillName,
                             data: [ContactsWithinSLA, ContactsOutOfSLA, TotalContacts],
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',
@@ -600,6 +601,7 @@ $(document).ready(function () {
                 percentRefused = response.agentPerformance[0].percentRefused;
                 workingRate = response.agentPerformance[0].workingRate;
                 occupancy = response.agentPerformance[0].occupancy;
+                agentId = response.agentPerformance[0].agentId;
 
                 console.log(response.agentPerformance[0])
 
@@ -609,7 +611,7 @@ $(document).ready(function () {
                     data: {
                         labels: ['agentOffered', 'inboundHandled', 'outboundHandled', 'totalHandled', 'refused'],
                         datasets: [{
-                            label: workingRate,
+                            label: $('#agents option:selected').text(),
                             data: [agentOffered, inboundHandled, outboundHandled, totalHandled, refused],
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',
