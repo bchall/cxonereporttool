@@ -433,7 +433,7 @@ $(document).ready(function () {
                 chartdata += '</div>'
                 chartdata += '<tr>'
                 chartdata += '<td>ContactsOutOfSLA<tr><td>' + ContactsOutOfSLA + '</td>'
-                chartdata += '<tr>'
+                chartdata += '</tr>'
                 chartdata += '<tr>'
                 chartdata += '<td>ContactsWithinSLA</div><td>' + ContactsWithinSLA + '</td>'
                 chartdata += '</tr>'
